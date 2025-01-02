@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog and Digital Clock</title>
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="clock"> <!-- Main container for both analog and digital clocks -->
+        <div class="container1"> <!-- Container for the analog clock -->
+            <div class="numbers">
+                <span style="--i:0;"><b>12</b></span> <!-- 12 o'clock mark -->
+                <span style="--i:1;"><b>3</b></span> <!-- 3 o'clock mark -->
+                <span style="--i:2;"><b>6</b></span> <!-- 6 o'clock mark -->
+                <span style="--i:3;"><b>9</b></span> <!-- 9 o'clock mark -->
+
+                <div class="circle" id="hr"><i></i></div> <!-- Hour hand -->
+                <div class="circle" id="mn"><i></i></div> <!-- Minute hand -->
+                <div class="circle" id="sc"><i></i></div> <!-- Second hand -->
+            </div>
+        </div>
+
+        <div class="container2"> <!-- Container for the digital clock -->
+            <div class="digital-clock">
+                <span id="hrs"><b>00</b></span> <!-- Hours display -->
+                <span><b>:</b></span>
+                <span id="min"><b>00</b></span> <!-- Minutes display -->
+                <span><b>:</b></span>
+                <span id="sec"><b>00</b></span> <!-- Seconds display -->
+                <span id="period"><b></b></span> <!-- Placeholder for AM/PM -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

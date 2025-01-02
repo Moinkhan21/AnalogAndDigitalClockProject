@@ -1,0 +1,208 @@
+/* Importing the Poppins font family for a consistent and modern look across elements */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Universal styles applied to all elements */
+* {
+    font-family: "Poppins", sans-serif;  /* Set the Poppins font for all text */
+    margin: 0;                            /* Remove default margin */
+    padding: 0;                           /* Remove default padding */
+    box-sizing: border-box;               /* Ensure padding and border are included in element's total width and height */
+}
+
+/* Body styling to center the clock on the screen */
+body {
+    display: flex;
+    justify-content: center;             /* Horizontally center the content */
+    align-items: center;                 /* Vertically center the content */
+    min-height: 100vh;                   /* Make the viewport at least as tall as the window */
+    background: linear-gradient(130deg, #2196f3, #e91e63);  /* Gradient background */
+}
+
+/* Outer styling for the analog clock */
+.clock {
+    position: relative;                  /* Allows for absolute positioning of inner elements */
+    width: 350px;
+    height: 350px;
+    background-color: #c9d5e0;           /* Light gray background for the clock face */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;                 /* Rounded edges for a modern appearance */
+    box-shadow:                         /* Multiple shadow effects for depth and a 3D look */
+        30px 30px 30px -10px rgba(0, 0, 0, 0.15),   /* Outer shadow */
+        inset 15px 15px 10px rgba(255, 255, 255, 0.75), /* Inner highlight */
+        -15px -15px 35px rgba(255, 255, 255, 0.55),
+        inset -1px -1px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 90px;                 /* Space below clock */
+}
+
+/* Small center point within the clock face */
+.clock::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #e91e63;           /* Pink color for contrast */
+    border-radius: 50%;                  /* Circular shape */
+    z-index: 10000;                      /* Ensures this is on top */
+    box-shadow:                           /* Creates concentric rings around center point */
+        0 0 0 1px #e91e63, 
+        0 0 0 3px #fff,
+        0 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Container for clock numbers */
+.clock .numbers {
+    position: absolute;
+    inset: 35px;                         /* Distance from clock's outer edge */
+    background-color: #152b4a;           /* Dark blue background for contrast */
+    border-radius: 50%;                  /* Circular shape */
+    box-shadow:                          /* Shadow effects for depth */
+        5px 5px 15px #152b4a66,
+        inset 5px 5px 5px rgba(255, 255, 255, 0.55),
+        -6px -6px 10px rgba(255, 255, 255, 1);
+}
+
+/* Styling for each individual clock number */
+.clock .numbers span {
+    position: absolute;
+    inset: 5px;                          /* Center each number */
+    text-align: center;
+    color: #fff;                         /* White font color for contrast */
+    font-size: 1.25rem;
+    transform: rotate(calc(90deg * var(--i))); /* Rotates each number to the correct angle */
+}
+
+/* Styling for bold clock numbers */
+.clock .numbers span b {
+    font-weight: 600;
+    display: inline-block;
+    transform: rotate(calc(-90deg * var(--i))); /* Counter-rotate for readability */
+}
+
+/* Inner ring animation */
+.clock .numbers::before {
+    content: "";
+    position: absolute;
+    inset: 35px;                         /* Size of the inner ring */
+    background: linear-gradient(#2196f3, #e91e63); /* Gradient color */
+    border-radius: 50%;                  /* Circular shape */
+    animation: animate 2s linear infinite; /* Rotation animation */
+}
+
+/* Animation keyframes to rotate the inner ring */
+@keyframes animate {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Dark circle inside the clock */
+.clock .numbers::after {
+    content: "";
+    position: absolute;
+    inset: 38px;
+    background-color: #152b4a;           /* Dark blue for a layered effect */
+    border-radius: 50%;
+}
+
+/* Clock hands setup */
+.clock .numbers .circle {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;                  /* Circular layout for hands */
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* Generic style for all clock hands */
+.clock .numbers .circle i {
+    position: absolute;
+    width: 3px;
+    height: 50%;                         /* Adjusts hand length */
+    background-color: #fff;              /* White color for hands */
+    transform-origin: bottom;            /* Anchor point for rotation */
+    transform: scaleY(0.65);             /* Reduces height for aesthetic */
+}
+
+/* Specific style for hour hand */
+.clock .numbers .circle#hr i {
+    width: 4px;                          /* Thicker hour hand */
+    transform: scaleY(0.34);             /* Shorter length */
+}
+
+/* Specific style for minute hand */
+.clock .numbers .circle#mn i {
+    transform: scaleY(0.46);             /* Intermediate length */
+}
+
+/* Specific style for second hand */
+.clock .numbers .circle#sc i {
+    width: 2px;                          /* Thinner second hand */
+    transform: scaleY(0.56);             /* Longest length */
+    background-color: #e91e63;           /* Pink color for visibility */
+    box-shadow: 0 0 30px;                /* Glowing effect */
+}
+
+/* Digital clock container below the analog clock */
+.container2 {
+    width: 350px;
+    height: 150px;
+    position: absolute;
+    top: 105%;                           /* Positions below the analog clock */
+}
+
+/* Styling for digital clock display */
+.digital-clock {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #c9d5e0;           /* Same light gray as analog clock */
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    border-radius: 50px;                 /* Rounded edges */
+    box-shadow:                         /* Similar shadow effects */
+        30px 30px 30px -10px rgba(0, 0, 0, 0.15),
+        inset 15px 15px 10px rgba(255, 255, 255, 0.75),
+        -15px -15px 35px rgba(255, 255, 255, 0.55),
+        inset -1px -1px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Digital clock inner glow effect */
+.container2::before {
+    content: "";
+    position: absolute;
+    inset: 35px;
+    background: linear-gradient(#2196f3, #e91e63); /* Gradient */
+    border-radius: 50px;
+    z-index: 1000;
+}
+
+/* Dark circle inside digital clock */
+.container2::after {
+    content: "";
+    position: absolute;
+    inset: 39px;
+    background-color: #152b4a;           /* Matches analog clock */
+    border-radius: 50px;
+    z-index: 1001;
+}
+
+/* Digital clock text styling */
+.digital-clock span {
+    font-size: 1.25rem;
+    font-weight: 600;
+    width: 42px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    bottom: 37.5%;                       /* Adjusts text position */
+    color: #fff;                         /* White color */
+    z-index: 1002;
+}
+
+/* Smooth transitions for clock hands */
+#hr, #mn, #sc {
+    transition: transform 0.05s ease-in-out;
+}
